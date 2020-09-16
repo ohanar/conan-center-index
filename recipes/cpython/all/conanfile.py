@@ -140,7 +140,7 @@ class CPythonConan(ConanFile):
         self.requires("mpdecimal/2.4.2")
         self.requires("zlib/1.2.11")
         if self.settings.compiler != "Visual Studio" or tools.Version(self.version) >= "3.8":
-            self.requires("libffi/3.3")
+            self.requires("libffi/3.2.1")
         if self.settings.os != "Windows":
             self.requires("libuuid/1.0.3")
             self.requires("libxcrypt/4.4.16")
