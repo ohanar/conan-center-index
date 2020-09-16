@@ -501,3 +501,7 @@ class CPythonConan(ConanFile):
         bindir = os.path.join(self.package_folder, "bin")
         self.output.info("Appending PATH environment variable: {}".format(bindir))
         self.env_info.PATH.append(bindir)
+
+    def package_id(self):
+        if self.settings.compiler == "Visual Studio" and self.settings.build_type != "Debug":
+            self.info.settings.build_type = "Release"
