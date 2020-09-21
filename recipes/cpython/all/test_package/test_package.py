@@ -2,6 +2,16 @@ import argparse
 import os
 import sys
 
+# Hack to work around Python 3.8+ secure dll loading
+# See https://docs.python.org/3/whatsnew/3.8.html#bpo-36085-whatsnew
+try:
+    from os import add_dll_directory
+except ImportError:
+    pass
+else:
+    for directory in os.environ.get("PATH", "").split(os.pathsep):
+        if os.path.isdir(directory):
+            add_dll_directory(directory)
 
 ALL_TESTS = dict()
 
